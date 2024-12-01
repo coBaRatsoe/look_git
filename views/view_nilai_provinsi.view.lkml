@@ -42,7 +42,7 @@ view: view_nilai_provinsi {
           GROUP BY 1
       )
       SELECT
-          aspek_pendataan_permadrasah.kode_provinsi
+          aspek_pendataan_permadrasah.kode_provinsi,
           aspek_pendataan_permadrasah.province,
           view_nilai_akhir_tata_kelola.aspek_tatakelola_jenjang AS jenjang,
           SUM(view_aspek_pendataan_nilai_akhir.NilaiAkhir) / COUNT (view_aspek_pendataan_nilai_akhir.nsm) AS total_nilai_akhir,
