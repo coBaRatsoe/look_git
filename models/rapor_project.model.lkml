@@ -1,5 +1,6 @@
 # Define the database connection to be used for this model.
 connection: "erkam_test"
+connection: "akg2024"
 
 # include all the views
 include: "/views/**/*.view.lkml"
@@ -24,7 +25,8 @@ persist_with: rapor_project_default_datagroup
 # To create more sophisticated Explores that involve multiple views, you can use the join parameter.
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
-
+explore: aspek_pendataan_permadrasah {}
+explore: aspek_tatakeloka_kabkota {}
 explore: nsp_test {}
 
 explore: ref_komponen {}
@@ -76,4 +78,3 @@ explore: vw_reportapbm_header_planning_permadrasah {}
 explore: vw_summary_rencanarealisasi_perprovinsi {}
 
 explore: vw_summary_rencanarealisasi_pernsm {}
-
