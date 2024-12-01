@@ -30,7 +30,16 @@ explore: aspek_tatakelola {}
 explore: aspek_guru_permadrasah {}
 explore: view_nilai_akhir_tata_kelola {}
 explore: view_aspek_guru_nilaiakhir {}
-explore: view_aspek_pendataan_nilai_akhir {}
+explore: view_aspek_pendataan_nilai_akhir {
+  join: view_nilai_akhir_tata_kelola {
+    relationship: many_to_one
+    sql_on: ${view_aspek_pendataan_nilai_akhir.nsm} = ${view_nilai_akhir_tata_kelola.aspek_tatakelola_nsm} ;;
+  }
+  join: view_aspek_guru_nilaiakhir {
+    relationship: many_to_one
+    sql_on:${view_aspek_pendataan_nilai_akhir.nsm} = ${view_aspek_guru_nilaiakhir.aspek_guru_permadrasah_nsm_satminkal} ;;
+  }
+}
 explore: nsp_test {}
 
 explore: ref_komponen {}
