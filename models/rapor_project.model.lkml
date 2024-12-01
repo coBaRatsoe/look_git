@@ -30,6 +30,7 @@ explore: aspek_tatakelola {}
 explore: aspek_guru_permadrasah {}
 explore: view_nilai_akhir_tata_kelola {}
 explore: view_aspek_guru_nilaiakhir {}
+explore: view_aspek_pendataan_nilai_akhir {}
 explore: nsp_test {}
 
 explore: ref_komponen {}
