@@ -5,6 +5,7 @@ view: view_nilai_provinsi {
           SELECT
               aspek_pendataan_permadrasah.nsm,
               aspek_pendataan_permadrasah.province,
+              aspek_pendataan_permadrasah.kode_provinsi
               (
                   (CASE WHEN aspek_pendataan_permadrasah.student_graduation = 0 THEN 0 ELSE 1 END) +
                   (CASE WHEN aspek_pendataan_permadrasah.avg_student = 0 THEN 0 ELSE 1 END) +
@@ -33,30 +34,32 @@ view: view_nilai_provinsi {
       view_aspek_guru_nilaiakhir AS (
           SELECT
               CAST(aspek_guru_permadrasah.Nsm_Satminkal AS STRING) AS aspek_guru_permadrasah_nsm_satminkal,
-              CASE 
+              CASE
                   WHEN COUNT(aspek_guru_permadrasah.Nsm_Satminkal) = 0 THEN 0
-                  ELSE SUM(aspek_guru_permadrasah.avg_skor) / COUNT(aspek_guru_permadrasah.Nsm_Satminkal) 
+                  ELSE SUM(aspek_guru_permadrasah.avg_skor) / COUNT(aspek_guru_permadrasah.Nsm_Satminkal)
               END AS nilai_akhir_guru
           FROM `bi-dashboard-dev.report_kinerja_madrasah.aspek_guru_permadrasah` AS aspek_guru_permadrasah
           GROUP BY 1
       )
       SELECT
+          aspek_pendataan_permadrasah.kode_provinsi
           aspek_pendataan_permadrasah.province,
           view_nilai_akhir_tata_kelola.aspek_tatakelola_jenjang AS jenjang,
           SUM(view_aspek_pendataan_nilai_akhir.NilaiAkhir) / COUNT (view_aspek_pendataan_nilai_akhir.nsm) AS total_nilai_akhir,
           SUM(view_aspek_guru_nilaiakhir.nilai_akhir_guru) / COUNT (view_aspek_pendataan_nilai_akhir.nsm) AS total_nilai_guru,
           SUM(view_nilai_akhir_tata_kelola.nilai_akhir_tata_kelola) / COUNT (view_aspek_pendataan_nilai_akhir.nsm) AS total_nilai_tata_kelola
       FROM view_aspek_pendataan_nilai_akhir
-      LEFT JOIN view_nilai_akhir_tata_kelola 
+      LEFT JOIN view_nilai_akhir_tata_kelola
           ON view_aspek_pendataan_nilai_akhir.nsm = view_nilai_akhir_tata_kelola.aspek_tatakelola_nsm
-      LEFT JOIN view_aspek_guru_nilaiakhir 
+      LEFT JOIN view_aspek_guru_nilaiakhir
           ON view_aspek_pendataan_nilai_akhir.nsm = view_aspek_guru_nilaiakhir.aspek_guru_permadrasah_nsm_satminkal
-      LEFT JOIN `bi-dashboard-dev.report_kinerja_madrasah.aspek_pendataan_permadrasah` AS aspek_pendataan_permadrasah 
+      LEFT JOIN `bi-dashboard-dev.report_kinerja_madrasah.aspek_pendataan_permadrasah` AS aspek_pendataan_permadrasah
           ON aspek_pendataan_permadrasah.nsm = view_aspek_pendataan_nilai_akhir.nsm
       WHERE aspek_pendataan_permadrasah.jenjang IN ("mi","ma","mts","ra")
       GROUP BY
       1,
-      2
+      2,
+      3
       LIMIT 5000 ;;
   }
 
@@ -93,10 +96,10 @@ view: view_nilai_provinsi {
   set: detail {
     fields: [
         province,
-	jenjang,
-	total_nilai_akhir,
-	total_nilai_guru,
-	total_nilai_tata_kelola
+  jenjang,
+  total_nilai_akhir,
+  total_nilai_guru,
+  total_nilai_tata_kelola
     ]
   }
 }
