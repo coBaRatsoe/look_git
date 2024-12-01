@@ -39,6 +39,10 @@ explore: view_aspek_pendataan_nilai_akhir {
     relationship: many_to_one
     sql_on:${view_aspek_pendataan_nilai_akhir.nsm} = ${view_aspek_guru_nilaiakhir.aspek_guru_permadrasah_nsm_satminkal} ;;
   }
+  join: aspek_pendataan_permadrasah {
+    relationship: many_to_one
+    sql_on: ${aspek_pendataan_permadrasah.nsm} = ${view_aspek_pendataan_nilai_akhir.nsm} ;;
+  }
 }
 explore: nsp_test {}
 
