@@ -26,7 +26,8 @@ persist_with: rapor_project_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 explore: aspek_pendataan_permadrasah {}
-explore: aspek_tatakeloka_kabkota {}
+explore: aspek_tatakelola {}
+explore: aspek_guru_permadrasah {}
 explore: nsp_test {}
 
 explore: ref_komponen {}
