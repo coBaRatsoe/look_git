@@ -13,11 +13,10 @@ view: view_aspek_pendataan_nilai_akhir {
           (CASE WHEN aspek_pendataan_permadrasah.rasiotoiletsiswa = 0 then 0 else 1 END)+
           (CASE WHEN aspek_pendataan_permadrasah.rasio_lab = 0 then 0 else 1 END))*10
           AS NilaiAkhir
-          
+
       FROM `bi-dashboard-dev.report_kinerja_madrasah.aspek_pendataan_permadrasah`  AS aspek_pendataan_permadrasah
       ORDER BY
-          1
-      LIMIT 500 ;;
+          1;;
   }
 
   measure: count {
@@ -38,7 +37,7 @@ view: view_aspek_pendataan_nilai_akhir {
   set: detail {
     fields: [
         nsm,
-	nilai_akhir
+  nilai_akhir
     ]
   }
 }
