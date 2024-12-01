@@ -11,8 +11,7 @@ view: view_aspek_guru_nilaiakhir {
       GROUP BY
           1
       ORDER BY
-          1
-      LIMIT 500 ;;
+          1 ;;
   }
 
   measure: count {
@@ -33,7 +32,7 @@ view: view_aspek_guru_nilaiakhir {
   set: detail {
     fields: [
         aspek_guru_permadrasah_nsm_satminkal,
-	nilai_akhir_guru
+  nilai_akhir_guru
     ]
   }
 }
