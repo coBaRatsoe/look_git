@@ -8,7 +8,7 @@ view: view_nilai_akhir_tata_kelola {
           aspek_tatakelola.skor_akhir AS aspek_tatakelola_skor_akhir,
           ((aspek_tatakelola.avg_lpj + aspek_tatakelola.skor_akhir) / 2) AS nilai_akhir_tata_kelola
       FROM `bi-dashboard-dev.report_kinerja_madrasah.aspek_tatakelola` AS aspek_tatakelola
-      WHERE aspek_tatakelola.tahun = 2024
+      WHERE aspek_tatakelola.tahun ="2024"
       GROUP BY
           1,
           2,
