@@ -68,6 +68,11 @@ view: view_nilai_provinsi {
     drill_fields: [detail*]
   }
 
+  dimension: kode_provinsi {
+    type: string
+    sql: ${TABLE}.kode_provinsi ;;
+  }
+
   dimension: province {
     type: string
     sql: ${TABLE}.province ;;
