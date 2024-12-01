@@ -5,7 +5,7 @@ view: view_nilai_provinsi {
           SELECT
               aspek_pendataan_permadrasah.nsm,
               aspek_pendataan_permadrasah.province,
-              aspek_pendataan_permadrasah.kode_provinsi
+              aspek_pendataan_permadrasah.kode_provinsi,
               (
                   (CASE WHEN aspek_pendataan_permadrasah.student_graduation = 0 THEN 0 ELSE 1 END) +
                   (CASE WHEN aspek_pendataan_permadrasah.avg_student = 0 THEN 0 ELSE 1 END) +
