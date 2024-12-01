@@ -3,7 +3,7 @@ view: view_nilai_akhir_tata_kelola {
   derived_table: {
     sql: SELECT
           aspek_tatakelola.nsm AS aspek_tatakelola_nsm,
-          aspek_tatakelola.tahun,
+          aspek_tatakelola.tahun AS aspek_tatakelola_tahun,
           aspek_tatakelola.avg_lpj AS aspek_tatakelola_avg_lpj,
           aspek_tatakelola.skor_akhir AS aspek_tatakelola_skor_akhir,
           ((aspek_tatakelola.avg_lpj + aspek_tatakelola.skor_akhir) / 2) AS nilai_akhir_tata_kelola
