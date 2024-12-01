@@ -28,6 +28,7 @@ persist_with: rapor_project_default_datagroup
 explore: aspek_pendataan_permadrasah {}
 explore: aspek_tatakelola {}
 explore: aspek_guru_permadrasah {}
+explore: view_nilai_akhir_tata_kelola {}
 explore: nsp_test {}
 
 explore: ref_komponen {}
