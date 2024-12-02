@@ -47,6 +47,7 @@ explore: view_aspek_pendataan_nilai_akhir {
 explore: view_nilai_provinsi {}
 explore: view_nilai_akhir_kabkota {}
 explore: view_nilai_tatakelola_detail_perprovinsi {}
+explore: view_nilai_tatakelola_detail_perkabkota {}
 explore: nsp_test {}
 
 explore: ref_komponen {}

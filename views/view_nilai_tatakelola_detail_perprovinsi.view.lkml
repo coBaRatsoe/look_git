@@ -1,7 +1,7 @@
 
 view: view_nilai_tatakelola_detail_perprovinsi {
   derived_table: {
-    sql: SELECT kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,
+    sql: SELECT kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
               CASE
               WHEN aspek_a BETWEEN 0 AND 40  THEN
                   'KURANG' ELSE
@@ -81,8 +81,20 @@ view: view_nilai_tatakelola_detail_perprovinsi {
                   'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
               CASE WHEN aspek_e BETWEEN 0 AND 60 THEN
                   'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_e
-          
+          END AS rekomendasi_penilaian_e,
+          CASE
+              WHEN avg_lpj BETWEEN 0 AND 50   THEN
+                  'Tidak Tepat Waktu' ELSE
+              CASE WHEN avg_lpj BETWEEN 51 AND 100 THEN
+                  'Tepat Waktu' END
+          END AS hasil_penilaian_lpj,
+          CASE
+              WHEN avg_lpj BETWEEN 61 AND 100   THEN
+                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi pelaporan LPJ agar tetap Tepat Waktu' ELSE
+              CASE WHEN avg_lpj BETWEEN 0 AND 60 THEN
+                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi pelaporan LPJ' END
+          END AS rekomendasi_lpj
+
       FROM (
       SELECT
           aspek_tatakelola.kode_provinsi  AS kode_provinsi,
@@ -200,23 +212,23 @@ view: view_nilai_tatakelola_detail_perprovinsi {
   set: detail {
     fields: [
         kode_provinsi,
-	provinsi,
-	jenjang,
-	aspek_a,
-	aspek_b,
-	aspek_c,
-	aspek_d,
-	aspek_e,
-	hasil_penilaian_a,
-	hasil_penilaian_b,
-	hasil_penilaian_c,
-	hasil_penilaian_d,
-	hasil_penilaian_e,
-	rekomendasi_penilaian_a,
-	rekomendasi_penilaian_b,
-	rekomendasi_penilaian_c,
-	rekomendasi_penilaian_d,
-	rekomendasi_penilaian_e
+  provinsi,
+  jenjang,
+  aspek_a,
+  aspek_b,
+  aspek_c,
+  aspek_d,
+  aspek_e,
+  hasil_penilaian_a,
+  hasil_penilaian_b,
+  hasil_penilaian_c,
+  hasil_penilaian_d,
+  hasil_penilaian_e,
+  rekomendasi_penilaian_a,
+  rekomendasi_penilaian_b,
+  rekomendasi_penilaian_c,
+  rekomendasi_penilaian_d,
+  rekomendasi_penilaian_e
     ]
   }
 }
