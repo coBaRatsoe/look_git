@@ -55,7 +55,7 @@ view: view_nilai_provinsi {
           aspek_pendataan_permadrasah.kode_provinsi,
           aspek_pendataan_permadrasah.province,
           view_nilai_akhir_tata_kelola.aspek_tatakelola_jenjang AS jenjang,
-          ROUND (SUM(view_aspek_pendataan_nilai_akhir.NilaiAkhir) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_akhir_pendataan,
+          ROUND (SUM(view_aspek_pendataan_nilai_akhir.NilaiAkhir) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_akhir,
           ROUND (SUM(view_aspek_guru_nilaiakhir.nilai_akhir_guru) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_guru,
           ROUND (SUM(view_nilai_akhir_tata_kelola.nilai_akhir_tata_kelola) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_tata_kelola,
           ROUND (SUM(view_aspek_siswa_nilai_akhir.skor) / COUNT (view_aspek_siswa_nilai_akhir.nsm),2) AS total_nilai_siswa
