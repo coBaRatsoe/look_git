@@ -218,7 +218,7 @@ view: view_nilai_tatakelola_detail_perprovinsi {
   }
   dimension: rekomendasi_lpj {
     type: string
-    sql: ${TABLE}.rekomendasi.lpj ;;
+    sql: ${TABLE}.rekomendasi_lpj ;;
   }
 
   set: detail {
