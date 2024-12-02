@@ -1,5 +1,5 @@
 
-view: view_aspek_siswa_permadrasah {
+view: aspek_siswa_permadrasah {
   derived_table: {
     sql: select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,nsm,nama,jenjang,skor,ck,capaian,deskripsi,rekomendasi
       from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah ;;
@@ -83,19 +83,19 @@ view: view_aspek_siswa_permadrasah {
   set: detail {
     fields: [
         tahun,
-	kode_provinsi,
-	provinsi,
-	kode_kabkota,
-	kabkota,
-	literasi,
-	nsm,
-	nama,
-	jenjang,
-	skor,
-	ck,
-	capaian,
-	deskripsi,
-	rekomendasi
+  kode_provinsi,
+  provinsi,
+  kode_kabkota,
+  kabkota,
+  literasi,
+  nsm,
+  nama,
+  jenjang,
+  skor,
+  ck,
+  capaian,
+  deskripsi,
+  rekomendasi
     ]
   }
 }
