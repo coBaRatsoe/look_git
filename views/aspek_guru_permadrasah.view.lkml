@@ -26,7 +26,7 @@ view: aspek_guru_permadrasah {
     sql: ${TABLE}.mapel ;;
   }
   dimension: nsm_satminkal {
-    type: number
+    type: string
     sql: ${TABLE}.Nsm_Satminkal ;;
   }
   dimension: predikat {
