@@ -54,6 +54,7 @@ explore: view_nilai_akhir_kabkota {}
 explore: view_nilai_tatakelola_detail_perprovinsi {}
 explore: view_nilai_tatakelola_detail_perkabkota {}
 explore: view_nilai_guru_detail_perprovinsi {}
+explore: view_aspek_siswa_permadrasah {}
 explore: nsp_test {}
 
 explore: ref_komponen {}
