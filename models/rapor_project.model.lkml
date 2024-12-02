@@ -48,6 +48,10 @@ explore: view_aspek_pendataan_nilai_akhir {
     relationship: many_to_one
     sql_on: ${aspek_pendataan_permadrasah.nsm} = ${view_aspek_pendataan_nilai_akhir.nsm} ;;
   }
+  join: aspek_siswa_permadrasah {
+    relationship: many_to_one
+    sql_on: ${aspek_pendataan_permadrasah.nsm} = ${aspek_siswa_permadrasah.nsm} ;;
+  }
 }
 explore: view_nilai_provinsi {}
 explore: view_nilai_akhir_kabkota {}
