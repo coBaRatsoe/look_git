@@ -30,7 +30,7 @@ explore: aspek_tatakelola {}
 explore: aspek_guru_permadrasah {
   join: aspek_pendataan_permadrasah {
     relationship: many_to_one
-    sql_on: ${CAST (aspek_guru_permadrasah.nsm_satminkal AS STRING)} = ${aspek_pendataan_permadrasah.nsm} ;;
+    sql_on: ${aspek_guru_permadrasah.nsm_satminkal} = ${aspek_pendataan_permadrasah.nsm} ;;
   }
 }
 explore: view_nilai_akhir_tata_kelola {}
