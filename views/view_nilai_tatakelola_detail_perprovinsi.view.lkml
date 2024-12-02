@@ -208,6 +208,18 @@ view: view_nilai_tatakelola_detail_perprovinsi {
     type: string
     sql: ${TABLE}.rekomendasi_penilaian_e ;;
   }
+  dimension: avg_lpj {
+    type: string
+    sql: ${TABLE}.avg_lpj ;;
+  }
+  dimension: hasil_penilaian_lpj {
+    type: string
+    sql: ${TABLE}.hasil_penilaian_lpj ;;
+  }
+  dimension: rekomendasi_lpj {
+    type: string
+    sql: ${TABLE}.rekomendasi.lpj ;;
+  }
 
   set: detail {
     fields: [
@@ -228,7 +240,10 @@ view: view_nilai_tatakelola_detail_perprovinsi {
   rekomendasi_penilaian_b,
   rekomendasi_penilaian_c,
   rekomendasi_penilaian_d,
-  rekomendasi_penilaian_e
+  rekomendasi_penilaian_e,
+  avg_lpj,
+  hasil_penilaian_lpj,
+  rekomendasi_lpj
     ]
   }
 }
