@@ -110,6 +110,10 @@ view: view_nilai_provinsi {
     type: number
     sql: ${TABLE}.total_nilai_tata_kelola ;;
   }
+  dimension: total_nilai_siswa {
+    type: number
+    sql: ${TABLE}.total_nilai_siswa ;;
+  }
 
   set: detail {
     fields: [
@@ -117,7 +121,9 @@ view: view_nilai_provinsi {
   jenjang,
   total_nilai_akhir,
   total_nilai_guru,
-  total_nilai_tata_kelola
+  total_nilai_tata_kelola,
+  total_nilai_siswa
+
     ]
   }
 }
