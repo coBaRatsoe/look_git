@@ -150,7 +150,7 @@ view: view_nilai_kabkota {
   }
   dimension: view_nilai_provinsi_total_nilai_siswa {
     type: number
-    sql: ${TABLE}.view_nilai_provinsi_total_nilai_tata_siswa ;;
+    sql: ${TABLE}.view_nilai_provinsi_total_nilai_siswa ;;
   }
 
   set: detail {
