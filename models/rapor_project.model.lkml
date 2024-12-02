@@ -59,3 +59,4 @@ explore: view_nilai_tatakelola_detail_perprovinsi {}
 explore: view_nilai_tatakelola_detail_perkabkota {}
 explore: view_nilai_guru_detail_perprovinsi {}
 explore: aspek_siswa_permadrasah {}
+explore: view_nilai_kabkota {}
