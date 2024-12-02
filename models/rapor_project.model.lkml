@@ -48,9 +48,9 @@ explore: view_aspek_pendataan_nilai_akhir {
     relationship: many_to_one
     sql_on: ${aspek_pendataan_permadrasah.nsm} = ${view_aspek_pendataan_nilai_akhir.nsm} ;;
   }
-  join: aspek_siswa_permadrasah {
+  join: view_aspek_siswa_nilai_akhir {
     relationship: many_to_one
-    sql_on: ${aspek_pendataan_permadrasah.nsm} = ${aspek_siswa_permadrasah.nsm} ;;
+    sql_on: ${aspek_pendataan_permadrasah.nsm} = ${view_aspek_pendataan_nilai_akhir.nsm} ;;
   }
 }
 explore: view_nilai_provinsi {}
