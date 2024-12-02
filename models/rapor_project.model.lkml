@@ -27,7 +27,12 @@ persist_with: rapor_project_default_datagroup
 # Each joined view also needs to define a primary key.
 explore: aspek_pendataan_permadrasah {}
 explore: aspek_tatakelola {}
-explore: aspek_guru_permadrasah {}
+explore: aspek_guru_permadrasah {
+  join: aspek_pendataan_permadrasah {
+    relationship: many_to_one
+    sql_on: ${CAST (aspek_guru_permadrasah.nsm_satminkal AS STRING)} = ${aspek_pendataan_permadrasah.nsm} ;;
+  }
+}
 explore: view_nilai_akhir_tata_kelola {}
 explore: view_aspek_guru_nilaiakhir {}
 explore: view_aspek_pendataan_nilai_akhir {
