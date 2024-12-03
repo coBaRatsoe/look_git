@@ -66,3 +66,4 @@ explore: view_nilai_guru_detail_pusat{}
 explore: view_gabungan_nilai_akhir {}
 explore: view_nilai_siswa_detail_perprovinsi {}
 explore: view_nilai_detail_siswa_perkabkota {}
+explore: view_nilai_siswa_detail_pusat {}
