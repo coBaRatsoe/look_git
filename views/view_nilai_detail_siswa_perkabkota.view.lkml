@@ -13,8 +13,8 @@ view: view_nilai_detail_siswa_perkabkota {
                 aspek_siswa_permadrasah.literasi  AS literasi,
                 ROUND (SUM (skor) / COUNT (nsm),2)  AS skor
             FROM aspek_siswa_permadrasah
-            GROUP BY
             WHERE literasi != "profil"
+            GROUP BY
                 1,
                 2,
                 3,
