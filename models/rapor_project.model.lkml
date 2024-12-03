@@ -53,6 +53,7 @@ explore: view_aspek_pendataan_nilai_akhir {
     sql_on: ${aspek_pendataan_permadrasah.nsm} = ${view_aspek_pendataan_nilai_akhir.nsm} ;;
   }
 }
+explore: view_aspek_siswa_nilai_akhir {}
 explore: view_nilai_provinsi {}
 explore: view_nilai_akhir_kabkota {}
 explore: view_nilai_tatakelola_detail_perprovinsi {}
