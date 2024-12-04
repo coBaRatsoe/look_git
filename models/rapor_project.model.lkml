@@ -68,3 +68,4 @@ explore: view_nilai_siswa_detail_perprovinsi {}
 explore: view_nilai_detail_siswa_perkabkota {}
 explore: view_nilai_siswa_detail_pusat {}
 explore: view_aspek_guru_permadrasah {}
+explore: view_nilai_pendataan_detail_perkabkota{}
