@@ -1,7 +1,7 @@
 
 view: view_nilai_detail_siswa_perkabkota {
   derived_table: {
-    sql: WITH aspek_siswa_permadrasah AS (select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,nsm,nama,jenjang,(case when jenjang = 'MTS' then skor-40 else
+    sql: WITH aspek_siswa_permadrasah AS (select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,rekomendasi,nsm,nama,jenjang,(case when jenjang = 'MTS' then skor-40 else
                                 case when jenjang = 'MA' then skor-80 end end) AS skor ,ck,capaian,deskripsi,rekomendasi
                   from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah )
             SELECT
@@ -11,6 +11,7 @@ view: view_nilai_detail_siswa_perkabkota {
                 aspek_siswa_permadrasah.kabkota,
                 LOWER(aspek_siswa_permadrasah.jenjang)  AS jenjang,
                 aspek_siswa_permadrasah.literasi  AS literasi,
+                aspek_siswa_permadrasah.rekomendasi AS rekomendasi,
                 ROUND (SUM (skor) / COUNT (nsm),2)  AS skor
             FROM aspek_siswa_permadrasah
             WHERE literasi != "profil"
@@ -20,7 +21,8 @@ view: view_nilai_detail_siswa_perkabkota {
                 3,
                 4,
                 5,
-                6
+                6,
+                7
             ORDER BY
                 1
             LIMIT 5000 ;;
