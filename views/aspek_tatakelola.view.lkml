@@ -101,6 +101,10 @@ view: aspek_tatakelola {
     type: string
     sql: ${TABLE}.tahun ;;
   }
+  dimension: hasil_penilaian_lpj {
+    type: string
+    sql:  ${TABLE}.hasil_penilaian_lpj ;;
+  }
   measure: count {
     type: count
   }
