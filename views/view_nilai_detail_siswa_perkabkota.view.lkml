@@ -9,7 +9,7 @@ view: view_nilai_detail_siswa_perkabkota {
                 aspek_siswa_permadrasah.provinsi  AS provinsi,
                 aspek_siswa_permadrasah.kode_kabkota,
                 aspek_siswa_permadrasah.kabkota,
-                aspek_siswa_permadrasah.jenjang  AS jenjang,
+                LOWER(aspek_siswa_permadrasah.jenjang)  AS jenjang,
                 aspek_siswa_permadrasah.literasi  AS literasi,
                 ROUND (SUM (skor) / COUNT (nsm),2)  AS skor
             FROM aspek_siswa_permadrasah

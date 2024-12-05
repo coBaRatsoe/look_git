@@ -7,7 +7,7 @@ view: view_nilai_siswa_detail_perprovinsi {
       SELECT
           aspek_siswa_permadrasah.kode_provinsi  AS kode_provinsi,
           aspek_siswa_permadrasah.provinsi  AS provinsi,
-          aspek_siswa_permadrasah.jenjang  AS jenjang,
+          LOWER (aspek_siswa_permadrasah.jenjang)  AS jenjang,
           aspek_siswa_permadrasah.literasi  AS literasi,
           aspek_siswa_permadrasah.rekomendasi AS rekomendasi,
           ROUND (SUM (skor) / COUNT (nsm),2)  AS skor

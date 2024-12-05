@@ -5,7 +5,7 @@ view: view_nilai_siswa_detail_pusat {
                                 case when jenjang = 'MA' then skor-80 end end) AS skor ,ck,capaian,deskripsi,rekomendasi
                   from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah )
             SELECT
-                aspek_siswa_permadrasah.jenjang  AS jenjang,
+                LOWER(aspek_siswa_permadrasah.jenjang)  AS jenjang,
                 aspek_siswa_permadrasah.literasi  AS literasi,
                 ROUND (SUM (skor) / COUNT (nsm),2)  AS skor
             FROM aspek_siswa_permadrasah
@@ -38,8 +38,8 @@ view: view_nilai_siswa_detail_pusat {
   set: detail {
     fields: [
         jenjang,
-	literasi,
-	skor
+  literasi,
+  skor
     ]
   }
 }
