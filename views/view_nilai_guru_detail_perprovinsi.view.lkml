@@ -6,9 +6,9 @@ view: view_nilai_guru_detail_perprovinsi {
       SELECT
           aspek_guru_permadrasah.provinsi  AS provinsi,
           aspek_pendataan_permadrasah.kode_provinsi  AS kode_provinsi,
-          aspek_guru_permadrasah.jenjang  AS jenjang,
+          LOWER (aspek_guru_permadrasah.jenjang)  AS jenjang,
           aspek_guru_permadrasah.status_madrasah  AS status_madrasah,
-          case when mapel ='Guru RA' then 'Guru' else 
+          case when mapel ='Guru RA' then 'Guru' else
           case when mapel = 'Kepala Madrasah'  then mapel else
           case when mapel ='Pengawas Madrasah' then mapel else
           case when mapel ='Bimbingan & Konseling' then mapel else
@@ -16,8 +16,8 @@ view: view_nilai_guru_detail_perprovinsi {
           aspek_guru_permadrasah.kompetensi_utama  AS kompetensi_utama,
           aspek_guru_permadrasah.avg_skor,
           aspek_guru_permadrasah.Nsm_satminkal
-      
-          
+
+
       FROM bi-dashboard-dev.report_kinerja_madrasah.aspek_guru_permadrasah  AS aspek_guru_permadrasah
       LEFT JOIN bi-dashboard-dev.report_kinerja_madrasah.aspek_pendataan_permadrasah  AS aspek_pendataan_permadrasah ON CAST (aspek_guru_permadrasah.Nsm_Satminkal AS STRING) = aspek_pendataan_permadrasah.nsm
       ) as aspek_guru
@@ -73,12 +73,12 @@ view: view_nilai_guru_detail_perprovinsi {
   set: detail {
     fields: [
         provinsi,
-	kode_provinsi,
-	jenjang,
-	status_madrasah,
-	status_tugas,
-	kompetensi_utama,
-	avg_skor
+  kode_provinsi,
+  jenjang,
+  status_madrasah,
+  status_tugas,
+  kompetensi_utama,
+  avg_skor
     ]
   }
 }
