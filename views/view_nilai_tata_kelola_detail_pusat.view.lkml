@@ -1,7 +1,7 @@
 
 view: view_nilai_tata_kelola_detail_pusat {
   derived_table: {
-    sql: SELECT jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
+    sql: SELECT tahun,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
                     CASE
                     WHEN aspek_a BETWEEN 0 AND 40  THEN
                         'KURANG' ELSE
@@ -94,9 +94,10 @@ view: view_nilai_tata_kelola_detail_pusat {
                     CASE WHEN avg_lpj BETWEEN 0 AND 60 THEN
                         'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi pelaporan LPJ' END
                 END AS rekomendasi_lpj
-      
+
             FROM (
             SELECT
+                aspek_tatakelola.tahun AS tahun,
                 aspek_tatakelola.jenjang  AS jenjang,
                 ROUND (SUM (aspek_tatakelola.aspek_a) / COUNT (aspek_tatakelola.nsm),2)  AS aspek_a,
                 ROUND (SUM (aspek_tatakelola.aspek_b) / COUNT (aspek_tatakelola.nsm),2)  AS aspek_b,
@@ -209,28 +210,32 @@ view: view_nilai_tata_kelola_detail_pusat {
     type: string
     sql: ${TABLE}.rekomendasi_lpj ;;
   }
+  dimension: tahun {
+    type: string
+    sql: ${TABLE}.tahun ;;
+  }
 
   set: detail {
     fields: [
         jenjang,
-	aspek_a,
-	aspek_b,
-	aspek_c,
-	aspek_d,
-	aspek_e,
-	avg_lpj,
-	hasil_penilaian_a,
-	hasil_penilaian_b,
-	hasil_penilaian_c,
-	hasil_penilaian_d,
-	hasil_penilaian_e,
-	rekomendasi_penilaian_a,
-	rekomendasi_penilaian_b,
-	rekomendasi_penilaian_c,
-	rekomendasi_penilaian_d,
-	rekomendasi_penilaian_e,
-	hasil_penilaian_lpj,
-	rekomendasi_lpj
+  aspek_a,
+  aspek_b,
+  aspek_c,
+  aspek_d,
+  aspek_e,
+  avg_lpj,
+  hasil_penilaian_a,
+  hasil_penilaian_b,
+  hasil_penilaian_c,
+  hasil_penilaian_d,
+  hasil_penilaian_e,
+  rekomendasi_penilaian_a,
+  rekomendasi_penilaian_b,
+  rekomendasi_penilaian_c,
+  rekomendasi_penilaian_d,
+  rekomendasi_penilaian_e,
+  hasil_penilaian_lpj,
+  rekomendasi_lpj
     ]
   }
 }
