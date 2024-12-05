@@ -1,7 +1,7 @@
 
 view: view_nilai_tatakelola_detail_perkabkota {
   derived_table: {
-    sql: SELECT kode_kabkota,kabkota,kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
+    sql: SELECT tahun,kode_kabkota,kabkota,kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
                     CASE
                     WHEN aspek_a BETWEEN 0 AND 40  THEN
                         'KURANG' ELSE
@@ -94,9 +94,10 @@ view: view_nilai_tatakelola_detail_perkabkota {
                     CASE WHEN avg_lpj BETWEEN 0 AND 60 THEN
                         'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi pelaporan LPJ' END
                 END AS rekomendasi_lpj,
-                
+
             FROM (
             SELECT
+                aspek_tatakelola.tahun AS tahun
                 aspek_tatakelola.kode_kabkota AS kode_kabkota,
                 aspek_tatakelola.kabkota AS kabkota,
                 aspek_tatakelola.kode_provinsi  AS kode_provinsi,
@@ -114,7 +115,8 @@ view: view_nilai_tatakelola_detail_perkabkota {
                 2,
                 3,
                 4,
-                5
+                5,
+                6
             ) as Nilai_aspek ;;
   }
 
@@ -237,32 +239,36 @@ view: view_nilai_tatakelola_detail_perkabkota {
     type: string
     sql: ${TABLE}.rekomendasi_lpj ;;
   }
+  dimension: tahun {
+    type: string
+    sql: ${TABLE}.tahun ;;
+  }
 
   set: detail {
     fields: [
         kode_kabkota,
-	kabkota,
-	kode_provinsi,
-	provinsi,
-	jenjang,
-	aspek_a,
-	aspek_b,
-	aspek_c,
-	aspek_d,
-	aspek_e,
-	avg_lpj,
-	hasil_penilaian_a,
-	hasil_penilaian_b,
-	hasil_penilaian_c,
-	hasil_penilaian_d,
-	hasil_penilaian_e,
-	rekomendasi_penilaian_a,
-	rekomendasi_penilaian_b,
-	rekomendasi_penilaian_c,
-	rekomendasi_penilaian_d,
-	rekomendasi_penilaian_e,
-	hasil_penilaian_lpj,
-	rekomendasi_lpj
+  kabkota,
+  kode_provinsi,
+  provinsi,
+  jenjang,
+  aspek_a,
+  aspek_b,
+  aspek_c,
+  aspek_d,
+  aspek_e,
+  avg_lpj,
+  hasil_penilaian_a,
+  hasil_penilaian_b,
+  hasil_penilaian_c,
+  hasil_penilaian_d,
+  hasil_penilaian_e,
+  rekomendasi_penilaian_a,
+  rekomendasi_penilaian_b,
+  rekomendasi_penilaian_c,
+  rekomendasi_penilaian_d,
+  rekomendasi_penilaian_e,
+  hasil_penilaian_lpj,
+  rekomendasi_lpj
     ]
   }
 }
