@@ -3,97 +3,97 @@ view: view_nilai_tatakelola_detail_perprovinsi {
   derived_table: {
     sql: SELECT tahun,kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
               CASE
-              WHEN aspek_a BETWEEN 0 AND 40  THEN
-                  'KURANG' ELSE
-              CASE WHEN aspek_a BETWEEN 41 AND 60 THEN
-                  'CUKUP' ELSE
-              CASE WHEN aspek_a BETWEEN 61 AND 80 THEN
-                  'BAIK' ELSE
-              CASE WHEN aspek_a BETWEEN 81 AND 100 THEN
-                  'SANGAT BAIK' END END END
-          END AS hasil_penilaian_a,
-          CASE
-              WHEN aspek_b BETWEEN 0 AND 40  THEN
-                  'KURANG' ELSE
-              CASE WHEN aspek_b BETWEEN 41 AND 60 THEN
-                  'CUKUP' ELSE
-              CASE WHEN aspek_b BETWEEN 61 AND 80 THEN
-                  'BAIK' ELSE
-              CASE WHEN aspek_b BETWEEN 81 AND 100 THEN
-                  'SANGAT BAIK' END END END
-          END AS hasil_penilaian_b,
-          CASE
-              WHEN aspek_c BETWEEN 0 AND 40  THEN
-                  'KURANG' ELSE
-              CASE WHEN aspek_c BETWEEN 41 AND 60 THEN
-                  'CUKUP' ELSE
-              CASE WHEN aspek_c BETWEEN 61 AND 80 THEN
-                  'BAIK' ELSE
-              CASE WHEN aspek_c BETWEEN 81 AND 100 THEN
-                  'SANGAT BAIK' END END END
-          END AS hasil_penilaian_c,
-          CASE
-              WHEN aspek_d BETWEEN 0 AND 40  THEN
-                  'KURANG' ELSE
-              CASE WHEN aspek_d BETWEEN 41 AND 60 THEN
-                  'CUKUP' ELSE
-              CASE WHEN aspek_d BETWEEN 61 AND 80 THEN
-                  'BAIK' ELSE
-              CASE WHEN aspek_d BETWEEN 81 AND 100 THEN
-                  'SANGAT BAIK' END END END
-          END AS hasil_penilaian_d,
-          CASE
-              WHEN aspek_e BETWEEN 0 AND 40  THEN
-                  'KURANG' ELSE
-              CASE WHEN aspek_e BETWEEN 41 AND 60 THEN
-                  'CUKUP' ELSE
-              CASE WHEN aspek_e BETWEEN 61 AND 80 THEN
-                  'BAIK' ELSE
-              CASE WHEN aspek_e BETWEEN 81 AND 100 THEN
-                  'SANGAT BAIK' END END END
-          END AS hasil_penilaian_e,
-          CASE
-              WHEN aspek_a BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
-              CASE WHEN aspek_a BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_a,
-          CASE
-              WHEN aspek_b BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
-              CASE WHEN aspek_b BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_b,
-          CASE
-              WHEN aspek_c BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
-              CASE WHEN aspek_c BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_c,
-          CASE
-              WHEN aspek_d BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
-              CASE WHEN aspek_d BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_d,
-          CASE
-              WHEN aspek_e BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
-              CASE WHEN aspek_e BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
-          END AS rekomendasi_penilaian_e,
-          CASE
-              WHEN avg_lpj BETWEEN 0 AND 50   THEN
-                  'Tidak Tepat Waktu' ELSE
-              CASE WHEN avg_lpj BETWEEN 51 AND 100 THEN
-                  'Tepat Waktu' END
-          END AS hasil_penilaian_lpj,
-          CASE
-              WHEN avg_lpj BETWEEN 61 AND 100   THEN
-                  'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi pelaporan LPJ agar tetap Tepat Waktu' ELSE
-              CASE WHEN avg_lpj BETWEEN 0 AND 60 THEN
-                  'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi pelaporan LPJ' END
-          END AS rekomendasi_lpj
+                    WHEN aspek_a <=40  THEN
+                        'KURANG' ELSE
+                    CASE WHEN aspek_a >40 AND aspek_a <=60 THEN
+                        'CUKUP' ELSE
+                    CASE WHEN aspek_a >60 AND aspek_a <=80 THEN
+                        'BAIK' ELSE
+                    CASE WHEN aspek_a >80 THEN
+                        'SANGAT BAIK' END END END
+                END AS hasil_penilaian_a,
+                CASE
+                    WHEN aspek_b <=40  THEN
+                        'KURANG' ELSE
+                    CASE WHEN aspek_b >40 AND aspek_b <=60 THEN
+                        'CUKUP' ELSE
+                    CASE WHEN aspek_b >60 AND aspek_b <=80 THEN
+                        'BAIK' ELSE
+                    CASE WHEN aspek_b >80 THEN
+                        'SANGAT BAIK' END END END
+                END AS hasil_penilaian_b,
+                CASE
+                    WHEN aspek_c <=40  THEN
+                        'KURANG' ELSE
+                    CASE WHEN aspek_c >40 AND aspek_c <=60 THEN
+                        'CUKUP' ELSE
+                    CASE WHEN aspek_c >60 AND aspek_c <=80 THEN
+                        'BAIK' ELSE
+                    CASE WHEN aspek_c >80 THEN
+                        'SANGAT BAIK' END END END
+                END AS hasil_penilaian_c,
+                CASE
+                    WHEN aspek_d <=40  THEN
+                        'KURANG' ELSE
+                    CASE WHEN aspek_d >40 AND aspek_d <=60 THEN
+                        'CUKUP' ELSE
+                    CASE WHEN aspek_d >60 AND aspek_d <=80 THEN
+                        'BAIK' ELSE
+                    CASE WHEN aspek_d >80 THEN
+                        'SANGAT BAIK' END END END
+                END AS hasil_penilaian_d,
+                CASE
+                    WHEN aspek_e <=40  THEN
+                        'KURANG' ELSE
+                    CASE WHEN aspek_e >40 AND aspek_e <=60 THEN
+                        'CUKUP' ELSE
+                    CASE WHEN aspek_e >60 AND aspek_e <=80 THEN
+                        'BAIK' ELSE
+                    CASE WHEN aspek_e >80 THEN
+                        'SANGAT BAIK' END END END
+                END AS hasil_penilaian_e,
+                CASE
+                    WHEN aspek_a >60   THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
+                    CASE WHEN aspek_a <=60 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
+                END AS rekomendasi_penilaian_a,
+                CASE
+                    WHEN aspek_b >60   THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
+                    CASE WHEN aspek_b <=60 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
+                END AS rekomendasi_penilaian_b,
+                CASE
+                    WHEN aspek_c >60  THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
+                    CASE WHEN aspek_c <=60 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
+                END AS rekomendasi_penilaian_c,
+                CASE
+                    WHEN aspek_d >60   THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
+                    CASE WHEN aspek_d <=60 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
+                END AS rekomendasi_penilaian_d,
+                CASE
+                    WHEN aspek_e >60   THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi sangat baik dan baik' ELSE
+                    CASE WHEN aspek_e <=60 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi cukup dan kurang' END
+                END AS rekomendasi_penilaian_e,
+                CASE
+                    WHEN avg_lpj <=50   THEN
+                        'Tidak Tepat Waktu' ELSE
+                    CASE WHEN avg_lpj >50 THEN
+                        'Tepat Waktu' END
+                END AS hasil_penilaian_lpj,
+                CASE
+                    WHEN avg_lpj >50   THEN
+                        'Madrasah mengalokasikan kegiatan untuk mempertahankan kondisi pelaporan LPJ agar tetap Tepat Waktu' ELSE
+                    CASE WHEN avg_lpj <=50 THEN
+                        'Madrasah mengalokasikan kegiatan untuk memperbaiki kondisi pelaporan LPJ' END
+                END AS rekomendasi_lpj
 
       FROM (
       SELECT
