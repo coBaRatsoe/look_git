@@ -1,14 +1,15 @@
 
 view: view_nilai_guru_detail_perkabkota {
   derived_table: {
-    sql: select provinsi,kode_provinsi,kode_kabkota,kabkota,jenjang,status_madrasah,status_tugas,kompetensi_utama,
+    sql: select tahun,provinsi,kode_provinsi,kode_kabkota,kabkota,jenjang,status_madrasah,status_tugas,kompetensi_utama,
       CASE WHEN COUNT (Nsm_satminkal) = 0 THEN 0 ELSE ROUND (SUM (avg_skor) / COUNT (Nsm_satminkal),2) END  AS avg_skor from (
       SELECT
+          aspek_guru_permadrasah.tahun AS tahun,
           aspek_pendataan_permadrasah.kode_kabkota AS kode_kabkota,
           aspek_guru_permadrasah.kabkota AS kabkota,
           aspek_guru_permadrasah.provinsi  AS provinsi,
           aspek_pendataan_permadrasah.kode_provinsi  AS kode_provinsi,
-          LOWER(aspek_guru_permadrasah.jenjang)  AS jenjang,
+          LOWER(aspek_pendataan_permadrasah.jenjang)  AS jenjang,
           aspek_guru_permadrasah.status_madrasah  AS status_madrasah,
           case when mapel ='Guru RA' then 'Guru' else
           case when mapel = 'Kepala Madrasah'  then mapel else
@@ -32,7 +33,8 @@ view: view_nilai_guru_detail_perkabkota {
           5,
           6,
           7,
-          8 ;;
+          8,
+          9;;
   }
 
   measure: count {
@@ -83,6 +85,10 @@ view: view_nilai_guru_detail_perkabkota {
   dimension: avg_skor {
     type: number
     sql: ${TABLE}.avg_skor ;;
+  }
+  dimension: tahun {
+    type: number
+    sql: ${TABLE}.tahun ;;
   }
 
   set: detail {
