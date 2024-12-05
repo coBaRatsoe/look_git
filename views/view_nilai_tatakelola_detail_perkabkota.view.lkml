@@ -97,7 +97,7 @@ view: view_nilai_tatakelola_detail_perkabkota {
 
             FROM (
             SELECT
-                aspek_tatakelola.tahun AS tahun
+                aspek_tatakelola.tahun AS tahun,
                 aspek_tatakelola.kode_kabkota AS kode_kabkota,
                 aspek_tatakelola.kabkota AS kabkota,
                 aspek_tatakelola.kode_provinsi  AS kode_provinsi,
