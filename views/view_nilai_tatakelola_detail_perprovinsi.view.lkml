@@ -1,7 +1,7 @@
 
 view: view_nilai_tatakelola_detail_perprovinsi {
   derived_table: {
-    sql: SELECT kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
+    sql: SELECT tahun,kode_provinsi,provinsi,jenjang, aspek_a,aspek_b,aspek_c,aspek_d,aspek_e,avg_lpj,
               CASE
               WHEN aspek_a BETWEEN 0 AND 40  THEN
                   'KURANG' ELSE
@@ -97,6 +97,7 @@ view: view_nilai_tatakelola_detail_perprovinsi {
 
       FROM (
       SELECT
+          aspek_tatakelola.tahun AS tahun,
           aspek_tatakelola.kode_provinsi  AS kode_provinsi,
           aspek_tatakelola.provinsi  AS provinsi,
           aspek_tatakelola.jenjang  AS jenjang,
@@ -110,7 +111,8 @@ view: view_nilai_tatakelola_detail_perprovinsi {
       GROUP BY
           1,
           2,
-          3
+          3,
+          4
       ) as Nilai_aspek ;;
   }
 
@@ -219,6 +221,10 @@ view: view_nilai_tatakelola_detail_perprovinsi {
   dimension: rekomendasi_lpj {
     type: string
     sql: ${TABLE}.rekomendasi_lpj ;;
+  }
+  dimension: tahun {
+    type: string
+    sql: ${TABLE}.tahun ;;
   }
 
   set: detail {
