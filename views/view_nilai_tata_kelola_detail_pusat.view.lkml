@@ -107,7 +107,8 @@ view: view_nilai_tata_kelola_detail_pusat {
                 ROUND (SUM (aspek_tatakelola.avg_lpj) / COUNT (aspek_tatakelola.nsm),2) AS avg_lpj
             FROM `bi-dashboard-dev.report_kinerja_madrasah.aspek_tatakelola`  AS aspek_tatakelola
             GROUP BY
-                1
+                1,
+                2
             ) as Nilai_aspek ;;
   }
 
