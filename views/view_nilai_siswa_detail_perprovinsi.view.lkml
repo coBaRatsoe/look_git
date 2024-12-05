@@ -5,6 +5,7 @@ view: view_nilai_siswa_detail_perprovinsi {
                           case when jenjang = 'MA' then skor-80 end end) AS skor ,ck,capaian,deskripsi,rekomendasi
             from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah )
       SELECT
+          aspek_siswa_permadrasah.tahun AS tahun,
           aspek_siswa_permadrasah.kode_provinsi  AS kode_provinsi,
           aspek_siswa_permadrasah.provinsi  AS provinsi,
           LOWER (aspek_siswa_permadrasah.jenjang)  AS jenjang,
@@ -18,7 +19,8 @@ view: view_nilai_siswa_detail_perprovinsi {
           2,
           3,
           4,
-          5
+          5,
+          6
       ORDER BY
           1
       LIMIT 5000 ;;
@@ -58,6 +60,11 @@ view: view_nilai_siswa_detail_perprovinsi {
     type: number
     sql: ${TABLE}.skor ;;
   }
+  dimension: tahun {
+    type: number
+    sql: ${TABLE}.tahun ;;
+  }
+
 
   set: detail {
     fields: [

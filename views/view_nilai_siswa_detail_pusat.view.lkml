@@ -5,6 +5,7 @@ view: view_nilai_siswa_detail_pusat {
                                 case when jenjang = 'MA' then skor-80 end end) AS skor ,ck,capaian,deskripsi
                   from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah )
             SELECT
+                aspek_siswa_permadrasah.tahun AS tahun,
                 LOWER(aspek_siswa_permadrasah.jenjang)  AS jenjang,
                 aspek_siswa_permadrasah.literasi  AS literasi,
                 aspek_siswa_permadrasah.rekomendasi AS rekomendasi,
@@ -14,7 +15,8 @@ view: view_nilai_siswa_detail_pusat {
             GROUP BY
                 1,
                 2,
-                3;;
+                3,
+                4;;
   }
 
   measure: count {
@@ -35,6 +37,14 @@ view: view_nilai_siswa_detail_pusat {
   dimension: skor {
     type: number
     sql: ${TABLE}.skor ;;
+  }
+  dimension: tahun {
+    type: number
+    sql: ${TABLE}.tahun ;;
+  }
+  dimension: rekomendasi {
+    type: number
+    sql: ${TABLE}.rekomendasi ;;
   }
 
   set: detail {
