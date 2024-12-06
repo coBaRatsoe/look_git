@@ -2,6 +2,7 @@
 view: view_gabungan_nilai_akhir {
   derived_table: {
     sql: SELECT
+                          aspek_pendataan_permadrasah.tahun as tahun,
                           aspek_pendataan_permadrasah.nsm as aspek_pendataan_permadrasah_nsm,
                           aspek_pendataan_permadrasah.status as aspek_pendataan_permadrasah_status,
                           aspek_pendataan_permadrasah.kode_provinsi as aspek_pendataan_permadrasah_kode_provinsi,
@@ -34,7 +35,8 @@ view: view_gabungan_nilai_akhir {
                           aspek_pendataan_permadrasah.city,
                           aspek_pendataan_permadrasah.jenjang,
                            aspek_pendataan_permadrasah.nsm,
-                           aspek_pendataan_permadrasah.status ;;
+                           aspek_pendataan_permadrasah.status,
+                          aspek_pendataan_permadrasah.tahun;;
   }
 
   measure: count {
@@ -85,6 +87,11 @@ view: view_gabungan_nilai_akhir {
   dimension: view_nilai_akhir_siswa {
     type: number
     sql: ${TABLE}.view_nilai_akhir_siswa ;;
+  }
+
+  dimension: tahun {
+    type: number
+    sql: ${TABLE}.tahun ;;
   }
 
   set: detail {

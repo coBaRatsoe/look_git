@@ -206,6 +206,10 @@ view: aspek_pendataan_permadrasah {
     type: number
     sql: ${TABLE}.toilet_total ;;
   }
+  dimension: tahun {
+    type: number
+    sql: ${TABLE}.tahun ;;
+  }
 
   dimension: website {
     type: string
@@ -214,4 +218,5 @@ view: aspek_pendataan_permadrasah {
   measure: count {
     type: count
   }
+
 }
