@@ -71,3 +71,4 @@ explore: view_aspek_guru_permadrasah {}
 explore: view_nilai_pendataan_detail_perkabkota{}
 explore: view_nilai_pendataan_detail_perprovinsi {}
 explore: view_nilai_pendataan_detail_pusat {}
+explore: ref_rekomendasi{}
