@@ -1,10 +1,13 @@
 view: ref_rekomendasi {
-  sql_table_name: `bi-dashboard-dev.report_kinerja_madrasah.ref_rekomendasi` ;;
+  derived_table: {
+  sql:select id,source_aspek,LOWER(jenjang) as jenjang,literasi,predikat,rekomendasi,simpulan
+
+  from `bi-dashboard-dev.report_kinerja_madrasah.ref_rekomendasi` ;;
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
   # # Define your dimensions and measures here, like this:
-
+}
   dimension: id {
     type: string
     sql: ${TABLE}.id ;;
