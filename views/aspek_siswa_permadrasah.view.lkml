@@ -1,7 +1,7 @@
 
 view: aspek_siswa_permadrasah {
   derived_table: {
-    sql: select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,nsm,nama,jenjang,skor,ck,capaian,deskripsi,rekomendasi
+    sql: select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,nsm,nama,jenjang,ROUND (skor,2) as skor,ck,capaian,deskripsi,rekomendasi,ROUND (skor_rkm,2) as skor_rkm,predikat_rkm
       from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah ;;
   }
 
@@ -79,6 +79,14 @@ view: aspek_siswa_permadrasah {
     type: string
     sql: ${TABLE}.rekomendasi ;;
   }
+  dimension: skor_rkm {
+    type: number
+    sql: ${TABLE}.skor_rkm ;;
+  }
+  dimension: predikat_rkm {
+    type: string
+    sql: ${TABLE}.predikat_rkm ;;
+  }
 
   set: detail {
     fields: [
@@ -95,7 +103,9 @@ view: aspek_siswa_permadrasah {
   ck,
   capaian,
   deskripsi,
-  rekomendasi
+  rekomendasi,
+  skor_rkm,
+  predikat_rkm
     ]
   }
 }
