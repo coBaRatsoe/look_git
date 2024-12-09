@@ -46,7 +46,7 @@ view: view_nilai_provinsi {
               CAST(aspek_siswa_permadrasah.nsm AS STRING) AS aspek_siswa_nilai_akhir_nsm,
               CASE
                   WHEN COUNT(aspek_siswa_permadrasah.nsm) = 0 THEN 0
-                  ELSE SUM(aspek_siswa_permadrasah.skor) / COUNT(aspek_siswa_permadrasah.nsm)
+                  ELSE SUM(aspek_siswa_permadrasah.skor_rkm) / COUNT(aspek_siswa_permadrasah.nsm)
               END AS nilai_akhir_siswa
           FROM `bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah` AS aspek_siswa_permadrasah
           GROUP BY 1
@@ -58,7 +58,7 @@ view: view_nilai_provinsi {
           ROUND (SUM(view_aspek_pendataan_nilai_akhir.NilaiAkhir) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_akhir,
           ROUND (SUM(view_aspek_guru_nilaiakhir.nilai_akhir_guru) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_guru,
           ROUND (SUM(view_nilai_akhir_tata_kelola.nilai_akhir_tata_kelola) / COUNT (view_aspek_pendataan_nilai_akhir.nsm),2) AS total_nilai_tata_kelola,
-          ROUND (SUM(view_aspek_siswa_nilai_akhir.skor) / COUNT (view_aspek_siswa_nilai_akhir.nsm),2) AS total_nilai_siswa
+          ROUND (SUM(view_aspek_siswa_nilai_akhir.skor_rkm) / COUNT (view_aspek_siswa_nilai_akhir.nsm),2) AS total_nilai_siswa
       FROM view_aspek_pendataan_nilai_akhir
       LEFT JOIN view_nilai_akhir_tata_kelola
           ON view_aspek_pendataan_nilai_akhir.nsm = view_nilai_akhir_tata_kelola.aspek_tatakelola_nsm
