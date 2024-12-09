@@ -26,7 +26,7 @@ view: view_gabungan_nilai_akhir {
                       FROM bi-dashboard-dev.report_kinerja_madrasah.aspek_pendataan_permadrasah AS aspek_pendataan_permadrasah
                       left join bi-dashboard-dev.report_kinerja_madrasah.aspek_tatakelola AS aspek_tatakelola on aspek_tatakelola.nsm = aspek_pendataan_permadrasah.nsm and cast(aspek_tatakelola.tahun as integer) = aspek_pendataan_permadrasah.tahun
                       LEFT join (select tahun,Nsm_Satminkal,sum(avg_skor) as total_skor,count(Nsm_Satminkal) as total_row from bi-dashboard-dev.report_kinerja_madrasah.aspek_guru_permadrasah group by tahun,Nsm_Satminkal)  AS aspek_guru_permadrasah on  cast(aspek_guru_permadrasah.Nsm_Satminkal as string) = aspek_pendataan_permadrasah.nsm and aspek_guru_permadrasah.tahun=aspek_pendataan_permadrasah.tahun
-                      left join (select tahun,nsm,sum(skor) as total_skor_siswa,count(nsm) as total_row_siswa
+                      left join (select tahun,nsm,sum(skor_rkm) as total_skor_siswa,count(nsm) as total_row_siswa
       from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah group by tahun,nsm ) as aspek_siswa_permadrasah on
       cast(aspek_siswa_permadrasah.nsm as string) = aspek_pendataan_permadrasah.nsm and aspek_siswa_permadrasah.tahun=aspek_pendataan_permadrasah.tahun
                       group by aspek_pendataan_permadrasah.province,
