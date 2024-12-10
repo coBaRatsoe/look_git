@@ -2,7 +2,7 @@
 view: view_nilai_siswa_detail_perprovinsi {
   derived_table: {
     sql: WITH aspek_siswa_permadrasah AS (select tahun,kode_provinsi,provinsi,concat(left(cast(kode_kabkota as string) ,2),'.',right(cast(kode_kabkota as string),2)) kode_kabkota,kabkota,literasi,nsm,nama,jenjang,(case when jenjang = 'mts' then skor-40 else
-                          case when jenjang = 'ma' then skor-80 end end) AS skor ,ck,capaian,deskripsi,rekomendasi
+                          case when jenjang = 'ma' then skor-80 else round(skor,2) end end) AS skor ,ck,capaian,deskripsi,rekomendasi
             from bi-dashboard-dev.report_kinerja_madrasah.aspek_siswa_permadrasah )
       SELECT
           aspek_siswa_permadrasah.tahun AS tahun,
